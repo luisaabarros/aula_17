@@ -77,11 +77,11 @@ try:
     print(f'\nMínimo: {minimo}')
     print(f'\nAmplitude Total: {amplitude_total}')
 
-    # IRQ = intervalo inter quartil - 50%
+    # IQR = intervalo inter quartil - 50%
     iqr = q3 - q1
 
     print('\nIntervalo Interquartil')
-    print(f'\nIRL: {iqr}')
+    print(f'\nIQR: {iqr}')
 
     # Limite Inferior
     limite_inferior = q1 - (1.5 * iqr)
@@ -116,25 +116,63 @@ except Exception as e:
 
 
 try:
-    # pip install matplotlib
-    print('Visualizando os dados...')
+    print('Visualizando dados...')
 
-    plt.subplots(2, 2, figsize=(16, 7) )
-    plt.suptitle('Análise de Boxplot')
+    plt.subplots(2, 2, figsize=(16, 7))
 
-    plt.subplot(2, 2, 1 )
-    plt.boxplot(array_roubo_veiculo, vert=False, showfliers=False, showmeans=True)
-    plt.title('Gráfico Boxplot')
+    plt.subplot(2, 2, 1)
+    plt.boxplot(array_roubo_veiculo, vert=False, showmeans=True)
 
-    plt.subplot(2, 2, 2 )
+    plt.subplot(2, 2, 2)
+    plt.boxplot(array_roubo_veiculo, vert=False, showmeans=False, showfliers=False)
 
-    plt.subplot(2, 2, 3 )
+    plt.subplot(2, 2, 3)
+    plt.text(0.1, 0.9, f'Média: {media}', fontsize=12)
+    plt.text(0.1, 0.8, f'Mediana: {mediana}', fontsize=12)
+    plt.text(0.1, 0.7, f'Distância: {distancia_media_mediana}', fontsize=12)
+    plt.text(0.1, 0.6, f'Menor Valor: {minimo}', fontsize=12)
+    plt.text(0.1, 0.5, f'Limite Inferior: {limite_inferior}', fontsize=12)
+    plt.text(0.1, 0.4, f'Q1: {q1}', fontsize=12)
+    plt.text(0.1, 0.3, f'Q3: {q3}', fontsize=12)
+    plt.text(0.1, 0.2, f'Limite Superior: {limite_superior}', fontsize=12)
+    plt.text(0.1, 0.1, f'Maior Valor: {maximo}', fontsize=12)
 
-    plt.subplot(2, 2, 4 )
+
+    plt.text(0.6, 0.9, f'Amplitude: {amplitude_total}', fontsize=12)
+    plt.text(0.6, 0.8, f'IQR: {iqr}', fontsize=12)
+
 
     plt.show()
 
 
-
 except Exception as e:
-    print(f'Erro ao plotar o gráfico: {e}')
+    print(f'Erro na plotagem do painél: {e}')
+
+
+
+
+
+# É A MESMA COISA DE CIMA, MAS COPIEI 2X PARA GRAVAR
+# try:
+#     # pip install matplotlib
+#     print('Visualizando os dados...')
+
+#     plt.subplots(2, 2, figsize=(16, 7) )
+#     plt.suptitle('Análise de Boxplot')
+
+#     plt.subplot(2, 2, 1 )
+#     plt.boxplot(array_roubo_veiculo, vert=False, showfliers=False, showmeans=True)
+#     plt.title('Gráfico Boxplot')
+
+#     plt.subplot(2, 2, 2 )
+
+#     plt.subplot(2, 2, 3 )
+
+#     plt.subplot(2, 2, 4 )
+
+#     plt.show()
+
+
+
+# except Exception as e:
+#     print(f'Erro ao plotar o gráfico: {e}')
